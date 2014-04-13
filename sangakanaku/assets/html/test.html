@@ -1,0 +1,27 @@
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js"></script>
+<script type="text/javascript">
+var app = angular.module('KanakuApp', []);
+
+app.controller('KanakuController', function($scope) {
+	$scope.expenses = [
+		{"description" : "Milk", "amount" : 20, "bearer" : {"username" : "Selva"}},
+		{"description" : "Maavu", "amount" : 30, "bearer" : {"username" : "Kumar"}},
+		{"description" : "Water", "amount" : 40, "bearer" : {"username" : "Mj"}}
+	];
+})
+;
+</script>
+</head>
+<body  ng-app="KanakuApp" ng-controller="KanakuController">
+<div class="container content">
+		<div class="panel" ng-repeat="exp in expenses">
+			<ul class="panel-heading">
+        <li class="panel-title">{{ exp.description }} - {{ exp.amount }}</li>
+      </ul>
+		</div>
+</div>
+</body>
+</html>
+

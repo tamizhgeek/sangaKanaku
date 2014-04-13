@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" ng-app="KanakuApp">
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.js"></script>
+<script src="{{ STATIC_URL }}javascript/app.js"></script>
+<link rel="stylesheet" type="text/css"
+			href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
+}]);
+
+</head>
+<body class="container">
+	<div class="header">
+		<h2 class="text-muted">Sanga Kanaku</h2>
+	</div>
+	{% block content %} {% endblock %}
+</body>
+</html>
+
