@@ -1,0 +1,32 @@
+{% verbatim %}
+<div ng-controller="KanakuExpenseEditController">
+	<div class="row">
+	<div class="col-md-4 pull-right">
+		<a href="#/house" class="btn btn-primary btn-lg" role="button">Back</a>
+	</div>
+</div>
+	
+	<h5> Create or Edit a Expense </h5>
+	<div id="messages"></div>
+	<form class="form-inline">
+        <div class="form-group block-level">
+            <input type="text" class="form-control" ng-model="newExpense.description" placeholder="Details">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model="newExpense.amount" placeholder="Amount">
+        </div>
+				<div class="form-group">
+            <select class="form-control" ng-model="newExpense.house"
+										placeholder="House" ng-options="h.name for h in houses"></select>
+        </div>
+        <div class="form-group">
+            <input type="date" class="form-control"
+										ng-model="newExpense.date" placeholder="yyyy-MM-dd">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" ng-click="save(newExpense)">Add Expense</button>
+        </div>
+    </form>
+</div>
+{% endverbatim %}
+

@@ -1,4 +1,5 @@
 {% verbatim %}
+<div  ng-controller="KanakuExpenseController">
 <div class="row">
 	<div class="col-md-4 pull-left">
 		<a href="#/newExpense" class="btn btn-default btn-lg active"
@@ -16,16 +17,22 @@
 			<th>Bearer</th>
 			<th>Amount</th>
 			<th>Date</th>
+			<th>Actions</th>
 		</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="expense in expenses">
 				<td>{{expense.description}}</td>
-				<td>{{expense.bearer}}</td>
+				<td>{{expense.bearer.username}}</td>
 				<td>{{expense.amount}}</td>
-				<td>{{expense.date}}</td>
+				<td>{{expense.date | date:'medium'}}</td>
+				<td>
+					<span class="glyphicon glyphicon-pencil" ng-click="edit(expense)"></span>
+					<span class="glyphicon glyphicon-remove" ng-click="delete($index)"></span>
+				</td>
 			</tr>
 		</tbody>
 </table>
 <div>
+</div>
 	{% endverbatim %}

@@ -48,9 +48,9 @@ class House(models.Model):
 
 class Expense(models.Model):
     description = models.TextField()
-    bearer = models.ForeignKey(User)
+    bearer = models.ForeignKey(User, default = 1)
     amount = models.IntegerField()
-    house = models.ForeignKey(House)
+    house = models.ForeignKey(House, related_name="expenses")
     date = models.DateTimeField()
     receipt = models.FileField(upload_to = "/tmp", blank = True, null = True)
 
