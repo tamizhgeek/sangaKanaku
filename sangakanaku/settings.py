@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django_extensions',
     'rest_framework',
     'sangakanaku.web',
-    'crispy_forms',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -123,4 +123,18 @@ STATICFILES_FINDERS = (
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+AUTHENTICATION_BACKENS = (
+      'social.backends.google.GoogleOAuth2',
+)
+
+SOCIAL_AUTH_GOOGLE_KEY='479811855081.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_SECRET='AIzaSyDWXK5snqJKx5GvZtu_N6hrIYfKjU7eEg0'
+
+
+#SOCIAL_AUTH_USER_MODEL = 'django.contrib.auth.models.User'
+
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
