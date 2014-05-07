@@ -19,8 +19,9 @@ urlpatterns = patterns('',
                        url(r'^api/house/(?P<house_id>\d+)/expenses$', HouseExpenseList.as_view(), name='house-expense-list'),
                        url(r'^api/expense/(?P<pk>\d+)$', ExpenseDetail.as_view(), name="expense-detail"),
                        url(r'', include('social.apps.django_app.urls', namespace='social')),
+                       url(r'^logout/', logout, name='logout'), 
                        url(r'^', HomePageView.as_view(), name="index"),
-                       url(r'^logout/', 'main.user_auth.logout', name='logout'),                          url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
+                       url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
                            {'document_root', settings.STATICFILES_DIRS}
   ),
 )

@@ -8,6 +8,16 @@ from rest_framework import viewsets, routers, generics, permissions
 
 EXTRA_TEMPLATE_DIRS = ['', 'partials/']
 
+
+from django.contrib.auth import logout as auth_logout
+from django.template import RequestContext
+from django.shortcuts import render_to_response, redirect
+
+
+def logout(request):
+    auth_logout(request)
+    return redirect("/")
+
 class HouseViewSet(viewsets.ModelViewSet):
     model = House
     permission_classes = [

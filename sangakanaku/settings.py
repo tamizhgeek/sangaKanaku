@@ -126,12 +126,13 @@ STATIC_URL = '/static/'
 
 
 
-AUTHENTICATION_BACKENS = (
-      'social.backends.google.GoogleOAuth2',
+AUTHENTICATION_BACKENDS = (
+    'social.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_GOOGLE_KEY='479811855081.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_SECRET='AIzaSyDWXK5snqJKx5GvZtu_N6hrIYfKjU7eEg0'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '479811855081-vachv1hmhm6vtvmtudpap1fklg3uat1p.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'toDOsAite_tGzB741s8yCZFK'
 
 
 #SOCIAL_AUTH_USER_MODEL = 'django.contrib.auth.models.User'
@@ -139,7 +140,9 @@ SOCIAL_AUTH_GOOGLE_SECRET='AIzaSyDWXK5snqJKx5GvZtu_N6hrIYfKjU7eEg0'
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
 LOGIN_URL = '/login/'
+
 LOGIN_REDIRECT_URL = '/'
+
 LOGOUT_URL = '/logout/'
 
 SOCIAL_AUTH_PIPELINE = (
@@ -156,10 +159,3 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details'
 )
 
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'web/templates/'),
-    os.path.join(BASE_DIR, 'web/templates/partials/'),
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
