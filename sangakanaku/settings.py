@@ -138,3 +138,28 @@ SOCIAL_AUTH_GOOGLE_SECRET='AIzaSyDWXK5snqJKx5GvZtu_N6hrIYfKjU7eEg0'
 
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/logout/'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+ #   'main.pipeline.require_email',
+    'social.pipeline.mail.mail_validation',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'web/templates/'),
+    os.path.join(BASE_DIR, 'web/templates/partials/'),
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)

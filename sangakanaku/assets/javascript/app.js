@@ -60,15 +60,15 @@ KanakuApp.config(['$routeProvider',
 					 function($routeProvider){
 						 $routeProvider.
 							 when('/house/:houseId/expenses', {
-								 templateUrl: 'partials/expenses',
+								 templateUrl: '/static/html/partials/expenses.html',
 								 controller: 'KanakuExpenseController'
 							 }).
 							 when('/house', {
-								 templateUrl: 'partials/houses',
+								 templateUrl: '/static/html/partials/houses.html',
 								 controller: 'KanakuHouseController'
 							 }).
 							 when('/newExpense', {
-								 templateUrl: 'partials/newExpense',
+								 templateUrl: '/static/html/partials/newExpense.html',
 								 controller: 'KanakuExpenseEditController'
 							 }).
 							 otherwise({

@@ -14,16 +14,13 @@ router.register(r'house', HouseViewSet)
 router.register(r'expense', ExpenseViewSet)
 
 urlpatterns = patterns('',
-                       
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^(?P<template_name>\w+)$', SimpleStaticView.as_view()),
-                       url(r'^partials/(?P<template_name>\w+)$', SimpleStaticView.as_view()),
                        url(r'^api/', include(router.urls)),
                        url(r'^api/house/(?P<house_id>\d+)/expenses$', HouseExpenseList.as_view(), name='house-expense-list'),
                        url(r'^api/expense/(?P<pk>\d+)$', ExpenseDetail.as_view(), name="expense-detail"),
                        url(r'', include('social.apps.django_app.urls', namespace='social')),
                        url(r'^', HomePageView.as_view(), name="index"),
-                       url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
+                       url(r'^logout/', 'main.user_auth.logout', name='logout'),                          url(r'^static/(?P<path>.*)$', 'django.views.static.serve',
                            {'document_root', settings.STATICFILES_DIRS}
   ),
 )

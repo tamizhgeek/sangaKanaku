@@ -1,5 +1,4 @@
 <div class="row well" ng-repeat="house in houses">
-	{% verbatim %}
         <div class="col-md-8
         h2"><a href="#/house/{{house.id}}/expenses">{{ house.name
         }}</a>
@@ -7,7 +6,6 @@
 						detailed breakdown </small>
 				</div>
 				<div class="col-md-4 h3">Rent: {{ house.rent }}</div>
-	{% endverbatim %}
       </div>
 		</div>
 </div>
