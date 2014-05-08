@@ -3,8 +3,9 @@ from sangakanaku.web.models import House, Expense
 from sangakanaku.web.serializers import *
 from django.views.generic import TemplateView
 from django.conf import settings
-from rest_framework import viewsets, routers, generics, permissions
-
+from rest_framework import viewsets, routers, generics, request
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 EXTRA_TEMPLATE_DIRS = ['', 'partials/']
 
@@ -19,33 +20,48 @@ def logout(request):
     return redirect("/")
 
 class HouseViewSet(viewsets.ModelViewSet):
+    Authentication_classes = (SessionAuthentication, )
     model = House
     permission_classes = [
-        permissions.AllowAny
+        IsAuthenticated,
     ]
 
+    def get_queryset(self):
+        return House.objects.filter(members__in=[self.request.user.id])
+    
 
 class ExpenseViewSet(viewsets.ModelViewSet):
+    Authentication_classes = (SessionAuthentication, )
     model = Expense
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
     permission_classes = [
-        permissions.AllowAny
+        IsAuthenticated,
     ]
+    
+    def pre_save(self, obj):
+        obj.bearer = self.request.user
+
 
 class ExpenseDetail(generics.RetrieveUpdateDestroyAPIView):
+    Authentication_classes = (SessionAuthentication, )
     model = Expense
     serializer_class = ExpenseSerializer
     permission_classes = [
-        permissions.AllowAny
+        IsAuthenticated,
     ]
+
+    def pre_save(self, obj):
+        obj.bearer = request.user
+    
 
 
 class HouseExpenseList(generics.ListAPIView):
+    Authentication_classes = (SessionAuthentication, )
     model = Expense
     serializer_class = ExpenseSerializer
     permission_classes = [
-        permissions.AllowAny
+        IsAuthenticated,
     ]
     
     def get_queryset(self):
@@ -61,11 +77,6 @@ class SimpleStaticView(TemplateView):
         return template_names
     
     def get(self, request, *args, **kwargs):
-        # from django.contrib.auth import authenticate, login
-        # if request.user.is_anonymous():
-        #     # Auto-login the User for Demonstration Purposes
-        #     user = authenticate()
-        #     login(request, user)
         return super(SimpleStaticView, self).get(request, *args, **kwargs)
 
 class HomePageView(TemplateView):
@@ -74,6 +85,4 @@ class HomePageView(TemplateView):
     def get(self, request, *args, **kwargs):
         return super(HomePageView, self).get(request, *args, **kwargs)
 
-        
-
-
+                        

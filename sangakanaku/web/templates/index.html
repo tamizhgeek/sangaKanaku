@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+{% if user.is_authenticated %}
 <div ng-view>
 </div>
+{% else %}
+<div class="jumbotron">
+<h1>	SangaKanaku </h1>
+<p> Expense tracker for shared bachelor accomodations </p>
+</div>
+{% endif %}
 {% endblock %}

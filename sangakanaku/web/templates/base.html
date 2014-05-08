@@ -5,8 +5,10 @@
   <script src="{{ STATIC_URL }}javascript/libs/angular-route.js"></script>
 <script src="{{ STATIC_URL }}javascript/app.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
 			href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
 <script type="text/javascript">
 KanakuApp.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
@@ -14,11 +16,36 @@ KanakuApp.config(['$httpProvider', function($httpProvider) {
 </script>
 </head>
 <body class="container">
-<div class="navbar navbar-default navbar-fixed-top">
-	 <li class="dropdown pull-right">
-     <a id="login-drop" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}" role="button" class="dropdown-toggle"
-     data-toggle="dropdown">Login with Google <b class="caret"></b></a>
-   </li>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<ul class="nav navbar-nav pull-right"> 
+			{% if user.is_authenticated %}
+			<li class="dropdown  pull-right">
+        <a href="#" role="button" class="dropdown-toggle"
+					 data-toggle="dropdown">{{ user.first_name }} {{ user.last_name
+        }} 
+					<b class="caret"></b>
+				</a>
+        <ul class="dropdown-menu">
+          <li><a href="/logout/" role="button">Logout
+						</a>
+					</li>
+        </ul>
+      </li>
+			{% else %}
+			<li class="dropdown pull-right">
+				<a href="#" class="dropdown-toggle menu-item"
+				data-toggle="dropdown" role="button">Login 
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a id="login-drop" role="button" href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">With Google
+						</a>
+					</li>
+				</ul>
+			</li>
+			{% endif %}
+		</ul>
 </div>
 	<div class="header">
 		<h2 class="text-muted">Sanga Kanaku</h2>

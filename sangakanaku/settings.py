@@ -71,7 +71,6 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
 )
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -151,7 +150,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.auth_allowed',
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
- #   'main.pipeline.require_email',
     'social.pipeline.mail.mail_validation',
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',

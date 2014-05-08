@@ -29,10 +29,11 @@ KanakuControllers.controller('KanakuExpenseController', ['$scope', '$routeParams
 }]);
 
 KanakuControllers.controller('KanakuExpenseEditController', 
-														 ['$scope','$http', '$filter',
-															function($scope, $http, $filter) {
+														 ['$scope','$routeParams','$http', '$filter',
+															function($scope, $routeParams, $http, $filter) {
 																$scope.newExpense = {};
 																$http.get('/api/house/?format=json').success(function(data) {
+																	$scope.houseId = $routeParams.houseId;
 																	$scope.houses = data;
 																});
 																$scope.save = function(expense) {
@@ -67,7 +68,7 @@ KanakuApp.config(['$routeProvider',
 								 templateUrl: '/static/html/partials/houses.html',
 								 controller: 'KanakuHouseController'
 							 }).
-							 when('/newExpense', {
+							 when('/newExpense/:houseId', {
 								 templateUrl: '/static/html/partials/newExpense.html',
 								 controller: 'KanakuExpenseEditController'
 							 }).

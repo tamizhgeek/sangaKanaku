@@ -48,7 +48,7 @@ class House(models.Model):
 
 class Expense(models.Model):
     description = models.TextField()
-    bearer = models.ForeignKey(User, default = 1)
+    bearer = models.ForeignKey(User)
     amount = models.IntegerField()
     house = models.ForeignKey(House, related_name="expenses")
     date = models.DateTimeField()

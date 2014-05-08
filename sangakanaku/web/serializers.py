@@ -16,7 +16,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
     bearer = UserSerializer(required = False)
     class Meta:
         model = Expense
-
+        
     def get_validation_exclusions(self):
         # Need to exclude `bearer` since we'll add that later based off the request
         exclusions = super(ExpenseSerializer, self).get_validation_exclusions()

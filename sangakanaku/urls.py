@@ -8,10 +8,9 @@ from rest_framework import viewsets, routers, generics
 
 admin.autodiscover()
 
-
 router = routers.DefaultRouter()
-router.register(r'house', HouseViewSet)
-router.register(r'expense', ExpenseViewSet)
+router.register(r'^house', HouseViewSet)
+router.register(r'^expense', ExpenseViewSet)
 
 urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
