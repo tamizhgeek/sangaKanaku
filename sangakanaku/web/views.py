@@ -25,7 +25,8 @@ class HouseViewSet(viewsets.ModelViewSet):
     permission_classes = [
         IsAuthenticated,
     ]
-
+    serializer_class = HouseSerializer
+    
     def get_queryset(self):
         return House.objects.filter(members__in=[self.request.user.id])
     
@@ -52,7 +53,7 @@ class ExpenseDetail(generics.RetrieveUpdateDestroyAPIView):
     ]
 
     def pre_save(self, obj):
-        obj.bearer = request.user
+        obj.bearer = self.request.user
     
 
 

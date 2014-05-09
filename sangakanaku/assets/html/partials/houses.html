@@ -2,10 +2,12 @@
         <div class="col-md-8
         h2"><a href="#/house/{{house.id}}/expenses">{{ house.name
         }}</a>
-					<small class="clearfix"> Click on the house name to find your share and
-						detailed breakdown </small>
+					<small class="clearfix"> Click on the house name to find the
+					detailed breakdown or add new expense</small>
 				</div>
 				<div class="col-md-4 h3">Rent: {{ house.rent }}</div>
+				<div class="col-md-4 h3"><kbd>Current Month Share: {{ house.my_share
+				}}</kbd></div>
       </div>
 		</div>
 </div>

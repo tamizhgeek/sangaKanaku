@@ -18,6 +18,7 @@ KanakuControllers.controller('KanakuExpenseController', ['$scope', '$routeParams
 	$scope.houseId = $routeParams.houseId;
 	$http.get('/api/house/'+$scope.houseId+'/expenses').success(function(data) {
 		$scope.expenses = data;
+		$scope.house = $scope.expenses[0].house
 	});
 	
 	$scope.delete = function(index) {
