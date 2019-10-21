@@ -55,7 +55,7 @@ pysmbc==1.0.13
 python-apt==0.8.9.1ubuntu1
 python-dateutil==1.5
 python-debian==0.1.21-nmu2ubuntu1
-pyxdg==0.25
+pyxdg==0.26
 reportlab==2.6
 requests==1.2.3
 rhythmbox-ubuntuone==13.10
