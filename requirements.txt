@@ -5,7 +5,7 @@ Mako==0.8.1
 MarkupSafe==0.15
 PAM==0.4.2
 PIL==1.1.7
-Pillow==2.0.0
+Pillow==6.2.0
 Pygments==1.6
 SecretStorage==1.0.0
 Twisted-Core==13.0.0
