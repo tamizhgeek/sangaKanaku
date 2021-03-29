@@ -6,7 +6,7 @@ MarkupSafe==0.15
 PAM==0.4.2
 PIL==1.1.7
 Pillow==2.0.0
-Pygments==1.6
+Pygments==2.7.4
 SecretStorage==1.0.0
 Twisted-Core==13.0.0
 Twisted-Names==13.0.0
