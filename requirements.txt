@@ -68,7 +68,7 @@ ssh-import-id==3.19
 system-service==0.1.6
 ubuntuone-couch==0.3.0
 ubuntuone-storage-protocol==13.10
-urllib3==1.6
+urllib3==1.26.5
 virtkey==0.63.0
 virtualenv==1.9.1
 wadllib==1.3.2
