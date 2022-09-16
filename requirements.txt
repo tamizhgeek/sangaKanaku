@@ -1,7 +1,7 @@
 Brlapi==0.6.0
 Fabric==1.6.0
 GnuPGInterface==0.3.2
-Mako==0.8.1
+Mako==1.2.2
 MarkupSafe==0.15
 PAM==0.4.2
 PIL==1.1.7
